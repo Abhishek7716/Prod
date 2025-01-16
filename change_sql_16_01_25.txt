@@ -1,6 +1,0 @@
-UPDATE `pops_sms_notification` SET `template_id` = '1107173634293166651' WHERE `pops_sms_notification`.`id` = 7;
-
-UPDATE `pops_sms_notification` SET `message` = 'Dear Customer,\n\nWe regret to inform you that your recent contribution to the National Pension System (NPS) has failed. If any funds have been deducted from your account, a refund will be initiated within 1-2 business days. For any queries, please feel free to reach out to us.\n\nRegards, -ICICI Prudential Pension Funds Management Co Ltd' WHERE `pops_sms_notification`.`id` = 7;
-
-
-UPDATE `pops_emails_notification` SET `message` = '@extends(\'layouts.email_template_layout\', [\'page_title\' => \'ICICI\'])\n\n@section(\'head_content\')\n <style>\n :root {\n --color-background-main: rgb(38, 38, 38);\n --color-background-main2: rgb(230, 230, 230);\n --color-primary-text:\n }\n\n .br {\n display: grid;\n padding-top: 8px;\n padding-bottom: 8px;\n }\n\n /* utility class */\n .text-center {\n text-align: center;\n color: darkslategray;\n }\n\n body {\n background-color: var(--color-background-main2);\n font-family: Arial, Helvetica, sans-serif;\n }\n\n .container {\n display: flex;\n justify-content: center;\n height: 100%;\n }\n\n table {\n border-collapse: collapse;\n background-color: #fff;\n }\n\n td {\n[...]
