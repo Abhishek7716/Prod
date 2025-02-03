@@ -1,0 +1,2 @@
+mast_sip_contr_id,pran,tier_type,sip_frequency,sip_amount,start_date,end_date,mandate_sip_date,sip_status,sip_count,umrn,pg_transaction_id,mode_of_payment,pg_status,sip_cancelled_on,cancelled_sip_pg_trans_id,cancel_sip_reason,vendor_uid,created_on,updated_on
+1150,110179493004,T2,Monthly,1000.0000000000,1738089000,2653237800,05,A,2,1704340539256156569,TRN17381566828373,UPI,A,NULL,NULL,NULL,NULL,1738156682,1738156832
