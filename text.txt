@@ -1,10 +1,21 @@
-cycle details = 
-subsequent
+1301233079889
+1301233079889
+1301233079889
+1301233081133
+1301233081950
+1301233082222
+1301233082313
+1301233082446
+2400063895049
 
 
-pg = "transaction" payment status should be A,   if not a stop   / contribution_type  "contri_ref_id"
-
-
-subsequent = payment_trans_id =   contri_recipt_no== excel trecipt no. , contri_Cra_trans_id    ( ye blank hone chayea ) , contri cra sync status "S" kar na hai , contri_cra_error_messager (manually sync).
-
-
+Transaction ID
+TRN17355082225095
+TRN17358032635202
+TRN17357468318979
+TRN17364037056221
+TRN17370944344097
+TRN17377942391416
+TRN17379780561665
+TRN17381415866972
+TRN17309725224932
