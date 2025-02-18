@@ -32,3 +32,11 @@ Receipts No.
 12673253000043538
 12174186700000011
 
+
+
+SELECT 
+    mast_sip_contr_id,
+    FROM_UNIXTIME(sip_date) AS sip_date_converted
+FROM pops_contribution_details_cycle
+WHERE mast_sip_contr_id IN (657, 706, 798, 809, 419, 420, 432, 439, 447, 886, 580, 404);
+
