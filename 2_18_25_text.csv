@@ -1,0 +1,3 @@
+trans_id,contr_ref_id,contribution_type,pran,payment_type,payment_status,payment_trans_id,payment_init_on,payment_compl_on,instrument_reference,instrument_date,gst_invoice_no,refund_trans_id,refund_id,refund_status,refund_init_on,refund_compl_on,refund_attempts,created_on,updated_on
+3310,1503,SIP,400011237160,MD,F,TRN17390506224301,1739050622,1739210706,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1739050622,1739210706
+3388,1503,SIP,400011237160,MD,A,TRN17392162218993,1739216221,1739334304,10832504329705271000,2025-02-12T09:55:03.138108971,GSTINVP1475,NULL,NULL,NULL,NULL,NULL,NULL,1739216221,1739334304
