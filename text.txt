@@ -32,5 +32,5 @@ Receipts No.
 12673253000043538
 12174186700000011
 
-ALTER TABLE `pops_charge_matrix` CHANGE `matrix_category` `matrix_category` ENUM('CAMS','KFINTECH','NSDL') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL;
 
+ALTER TABLE `pops_charge_matrix` ADD `corporate_name` TEXT NOT NULL AFTER `matrix_id`;
