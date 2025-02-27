@@ -32,36 +32,5 @@ Receipts No.
 12673253000043538
 12174186700000011
 
-
- function get_sip_contribution_csv($from_date = null, $to_date = null,$report_type = null,$start = null,$limit = null){
-      // return  DB::table('subsequent_contribution_details')->get()->toArray();
-      if($report_type=='ALL')
-      $report_type=null;
- // enable_query_log();
-      
-      $query = DB::table($this->contribution_details_cycle)
-      ->join($this->users, $this->contribution_details_cycle . '.pran', '=', $this->users . '.pran')
-      ->join($this->pg_transaction_details ,$this->contribution_details_cycle . '.contr_id', '=', $this->pg_transaction_details . '.contr_ref_id')
-      ->leftJoin($this->user_address_details, $this->contribution_details_cycle . '.pran', '=', $this->user_address_details . '.pran')
-      ->join($this->master_contribution_details, $this->contribution_details_cycle . '.mast_sip_contr_id', '=', $this->master_contribution_details . '.mast_sip_contr_id')
-       ->select($this->contribution_details_cycle . '.*', $this->users . '.*', $this->pg_transaction_details . '.created_on as cre', $this->pg_transaction_details . '.pran as p', $this->pg_transaction_details . '.payment_status as payment_status', $this->user_address_details . '.*', $this->master_contribution_details . '.contribution_frequency as contribution_freq')
-   ->orderBy('cre', 'asc')
-   ->groupBy($this->pg_transaction_details . '.payment_trans_id') ;
-
-    
-      if ($from_date && $to_date) {
-        $query->whereBetween($this->contribution_details_cycle . '.created_on', [$from_date, $to_date]);
-      }
-      if($report_type){
-        $query->where($this->pg_transaction_details . '.payment_status', $report_type);
-      }
-       $query->where($this->pg_transaction_details . '.contribution_type', 'SIP');
-       if($start) $query->skip($start);
-       if($limit) $query->take($limit);
-       
-// $query->get();
- //print_last_query();
-      return $query->get()->toArray();
-    }
-
+ALTER TABLE `pops_charge_matrix` CHANGE `matrix_category` `matrix_category` ENUM('CAMS','KFINTECH','NSDL') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL;
 
