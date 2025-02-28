@@ -32,18 +32,69 @@ Receipts No.
 12673253000043538
 12174186700000011
 
-SELECT *
-FROM icipru_popprd.pops_users AS t1
-LEFT JOIN icipru_popprd.pops_user_address_details AS t2 
-    ON t1.pran = t2.pran 
-    AND t2.address_type = (
-        CASE 
-            WHEN EXISTS (
-                SELECT 1 
-                FROM icipru_popprd.pops_user_address_details 
-                WHERE pran = t1.pran AND address_type = 'P'
-            ) THEN 'P'
-            ELSE 'C'
-        END
-    )
-WHERE t1.pran = '900000010222';
+ $query_subsequent = DB::table($this->subsequent_contribution_details)
+    	->join('pg_transaction_details', 'pg_transaction_details.payment_trans_id', '=', "{$this->subsequent_contribution_details}.payment_trans_id")
+    	->join('users', 'users.pran', '=', "{$this->subsequent_contribution_details}.pran")
+    	->leftJoin('user_address_details', 'user_address_details.pran', '=', "{$this->users}.pran")
+    	->select(
+        'pg_transaction_details.created_on', 
+      	'subsequent_contribution_details.pran',
+        'users.cra_account',
+      	'subsequent_contribution_details.tier_type',
+      	'pg_transaction_details.contribution_type',
+      	'subsequent_contribution_details.total_amount_received',
+      	'subsequent_contribution_details.contribution_amount',
+      	'subsequent_contribution_details.contribution_fees',
+      	'subsequent_contribution_details.igst_amt',
+      	'subsequent_contribution_details.cgst_amt',
+      	'subsequent_contribution_details.sgst_amt',
+      	'subsequent_contribution_details.contr_cra_trans_id',
+      	'subsequent_contribution_details.contr_receipt_no',
+        'pg_transaction_details.payment_trans_id',
+        'users.custom_state',
+        'user_address_details.address_state'
+      
+   	 	)
+   		 ->where('pg_transaction_details.payment_status', 'A')
+        ->orderBy('created_on', 'asc')
+   ->groupBy($this->pg_transaction_details . '.payment_trans_id') ;
+       
+    	
+      if ($from_date && $to_date) {
+        $query_subsequent->whereBetween($this->pg_transaction_details . '.created_on', [$from_date, $to_date]);
+      }
+      $result_subsequent= $query_subsequent->get()->toArray();  
+    
+      $query_sip = DB::table($this->contribution_details_cycle)
+    	->join('pg_transaction_details', 'pg_transaction_details.payment_trans_id', '=', "{$this->contribution_details_cycle}.payment_trans_id")
+    	->join('users', 'users.pran', '=', "{$this->contribution_details_cycle}.pran")
+    	->leftJoin('user_address_details', 'user_address_details.pran', '=', "{$this->users}.pran")
+    	->select(
+        'pg_transaction_details.created_on', 
+      	'contribution_details_cycle.pran',
+        'users.cra_account',
+      	'contribution_details_cycle.tier_type',
+      	'pg_transaction_details.contribution_type',
+      	'contribution_details_cycle.total_amount_received',
+      	'contribution_details_cycle.sip_amount',
+      	'contribution_details_cycle.contr_cra_trans_id',
+      
+      	'contribution_details_cycle.contribution_fees',
+      	'contribution_details_cycle.igst_amt',
+      	'contribution_details_cycle.cgst_amt',
+      	'contribution_details_cycle.sgst_amt',
+      	'contribution_details_cycle.contr_receipt_no',
+        'pg_transaction_details.payment_trans_id',
+        'users.custom_state',
+        'user_address_details.address_state'
+   	 	)
+   		 ->where('pg_transaction_details.payment_status', 'A')
+        ->orderBy('created_on', 'asc')
+   ->groupBy($this->pg_transaction_details . '.payment_trans_id');
+       
+    	
+      if ($from_date && $to_date) {
+        $query_sip->whereBetween($this->pg_transaction_details . '.created_on', [$from_date, $to_date]);
+      }
+        $result_sip= $query_sip->get()->toArray();
+     // return $result_sip;
