@@ -33,4 +33,4 @@ Receipts No.
 12174186700000011
 
 
-ALTER TABLE `pops_charge_matrix` ADD `corporate_name` TEXT NOT NULL AFTER `matrix_id`;
+SELECT * FROM  icipru_popprd.pops_users as t1 left join icipru_popprd.pops_user_address_details as t2 on t1.pran=t2.pran and (t2.address_type is null or t2.address_type ='P' or  t2.address_type='C') where t1.pran='900000010222' ;
