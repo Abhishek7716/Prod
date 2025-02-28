@@ -32,5 +32,18 @@ Receipts No.
 12673253000043538
 12174186700000011
 
-
-SELECT * FROM  icipru_popprd.pops_users as t1 left join icipru_popprd.pops_user_address_details as t2 on t1.pran=t2.pran and (t2.address_type is null or t2.address_type ='P' or  t2.address_type='C') where t1.pran='900000010222' ;
+SELECT *
+FROM icipru_popprd.pops_users AS t1
+LEFT JOIN icipru_popprd.pops_user_address_details AS t2 
+    ON t1.pran = t2.pran 
+    AND t2.address_type = (
+        CASE 
+            WHEN EXISTS (
+                SELECT 1 
+                FROM icipru_popprd.pops_user_address_details 
+                WHERE pran = t1.pran AND address_type = 'P'
+            ) THEN 'P'
+            ELSE 'C'
+        END
+    )
+WHERE t1.pran = '900000010222';
