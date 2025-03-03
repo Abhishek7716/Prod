@@ -34,5 +34,10 @@ Receipts No.
 
 
 
+SELECT table_name AS "Table",
+ROUND(((data_length + index_length) / 1024 / 1024), 2) AS "Size (MB)"
+FROM information_schema.TABLES
+WHERE table_schema = "database_name"
+ORDER BY (data_length + index_length) DESC;
 
-$subQuery = DB::table('users_address')     ->select('id', 'user_id', 'address', 'address_type')     ->whereIn('address_type', ['Home', 'Office', 'Billing'])     ->orderByRaw("FIELD(address_type, 'Home', 'Office', 'Billing')")     ->groupBy('user_id'); $users = DB::table('usera as u')     ->leftJoinSub($subQuery, 'ua', function ($join) {         $join->on('u.id', '=', 'ua.user_id');     })     ->select('u.id', 'u.name', 'ua.address', 'ua.address_type') ->get();
+
