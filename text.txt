@@ -32,9 +32,5 @@ Receipts No.
 12673253000043538
 12174186700000011
 
-
-SELECT *, FROM_UNIXTIME(created_on) AS created_datetime
-FROM pops_feedback
-WHERE created_on >= UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) 
-AND created_on < UNIX_TIMESTAMP(CURDATE());
-
+ALTER TABLE `pops_corporate_details` ADD `gst_number` VARCHAR(50) NOT NULL AFTER `rm_mobile_no`;
+ALTER TABLE `pops_corporate_details` CHANGE `gst_number` `gst_number` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL;
