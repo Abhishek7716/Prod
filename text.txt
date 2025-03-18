@@ -40,3 +40,7 @@ DB User Password: Sf5c96Re@sK%
 
 DB 1 Name: icipru_popprd
 DB 2 Name: icipru_popprd_txt
+
+
+SELECT *, FROM_UNIXTIME(created_on) AS date_and_time  
+FROM icic_pop.pops_feedback  WHERE created_on BETWEEN 1727697600 AND 1742275266;
