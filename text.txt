@@ -32,5 +32,11 @@ Receipts No.
 12673253000043538
 12174186700000011
 
-ALTER TABLE `pops_corporate_details` ADD `gst_number` VARCHAR(50) NOT NULL AFTER `rm_mobile_no`;
-ALTER TABLE `pops_corporate_details` CHANGE `gst_number` `gst_number` VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL;
+
+DB Host : 10.239.76.55
+DB Port : 3306
+DB User: icipopusr
+DB User Password: Sf5c96Re@sK%
+
+DB 1 Name: icipru_popprd
+DB 2 Name: icipru_popprd_txt
