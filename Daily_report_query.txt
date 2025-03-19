@@ -2,6 +2,7 @@ SELECT
     t1.mast_sip_contr_id AS "SIP ID",
     t1.pran AS PRAN,
     t1.tier_type AS "TIER TYPE",
+    t1.mandate_sip_date as  "mandate_sip_date",
     t1.sip_frequency,
     t2.total_amount_received AS "NET AMOUNT",
     t2.sip_amount AS "TOTAL AMOUNT",
@@ -24,6 +25,7 @@ FROM icipru_popprd.pops_master_contribution_details AS t1
     INNER JOIN icipru_popprd.pops_contribution_details_cycle AS t2 ON t1.mast_sip_contr_id = t2.mast_sip_contr_id
     INNER JOIN icipru_popprd.pops_pg_transaction_details AS t3 ON t2.payment_trans_id = t3.payment_trans_id
 WHERE
-       t1.sip_status = 'A' 
-AND t2.mandate_trigger1_on IS NOT NULL
+    t3.contribution_type = "SIP"
+    AND t2.mandate_trigger1_on IS NOT NULL
+    AND t1.sip_status = "A"
 ORDER BY t1.mast_sip_contr_id, t2.sip_date, t3.payment_init_on ASC;
