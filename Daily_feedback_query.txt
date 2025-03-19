@@ -1,0 +1,5 @@
+use icipru_popprd;
+SELECT contri_id,pran,contribution_type,score,feedback, FROM_UNIXTIME(created_on) AS created_datetime
+FROM pops_feedback
+WHERE created_on >= UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) 
+AND created_on < UNIX_TIMESTAMP(CURDATE());
