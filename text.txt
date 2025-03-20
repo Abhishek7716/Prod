@@ -1,19 +1,7 @@
+ALTER TABLE `pops_corporate_contribution_user_details` ADD `corporate_id` BIGINT NOT NULL AFTER `id`;
 
-CREATE TABLE `pops_corporate_bank_details` (
-  `id` bigint NOT NULL,
-  `corporate_id` bigint NOT NULL,
-  `ifsc_code` varchar(255) NOT NULL,
-  `account_no` varchar(255) NOT NULL,
-  `bank` varchar(300) NOT NULL,
-  `bank_branch` varchar(300) NOT NULL,
-  `attachment` enum('bank_statement','cancelled_cheque','letter_head') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `attachment_file_path` varchar(100) NOT NULL,
-  `created_on` int NOT NULL,
-  `updated_on` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-COMMIT;
+ALTER TABLE `pops_pran_shifting` ADD `corporate_id` BIGINT NOT NULL AFTER `ps_id`;
+ 
+ALTER TABLE `pops_corporate_details` ADD `contact` VARCHAR(255) NOT NULL AFTER `address`, ADD `email` VARCHAR(300) NOT NULL AFTER `contact`;
 
-ALTER TABLE `pops_corporate_bank_details` CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
-
-
-ALTER TABLE `pops_admin` ADD `corporate_id` BIGINT NOT NULL AFTER `uid`;
+ALTER TABLE `pops_corporate_modification` ADD `corporate_id` BIGINT NOT NULL AFTER `login_id`;
