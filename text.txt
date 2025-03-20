@@ -1,46 +1,19 @@
-1301233079889
-1301233079889
-1301233079889
-1301233081133
-1301233081950
-1301233082222
-1301233082313
-1301233082446
-2400063895049
+
+CREATE TABLE `pops_corporate_bank_details` (
+  `id` bigint NOT NULL,
+  `corporate_id` bigint NOT NULL,
+  `ifsc_code` varchar(255) NOT NULL,
+  `account_no` varchar(255) NOT NULL,
+  `bank` varchar(300) NOT NULL,
+  `bank_branch` varchar(300) NOT NULL,
+  `attachment` enum('bank_statement','cancelled_cheque','letter_head') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `attachment_file_path` varchar(100) NOT NULL,
+  `created_on` int NOT NULL,
+  `updated_on` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+COMMIT;
+
+ALTER TABLE `pops_corporate_bank_details` CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
 
 
-Transaction ID
-TRN17355082225095
-TRN17358032635202
-TRN17357468318979
-TRN17364037056221
-TRN17370944344097
-TRN17377942391416
-TRN17379780561665
-TRN17381415866972
-TRN17309725224932
-
-
-Receipts No.
-12673253000043878 Manually Sync (previous cont_receipt_no = 12760727200000082 -  updated cont_receipt_no = 12673253001038500)
-12673253000043877
-12673253000043879
-12673253000043969
-12673253000043593
-12673253000043865
-12673253000043479
-12673253000043538
-12174186700000011
-
-
-DB Host : 10.239.76.55
-DB Port : 3306
-DB User: icipopusr
-DB User Password: Sf5c96Re@sK%
-
-DB 1 Name: icipru_popprd
-DB 2 Name: icipru_popprd_txt
-
-
-SELECT *, FROM_UNIXTIME(created_on) AS date_and_time  
-FROM icic_pop.pops_feedback  WHERE created_on BETWEEN 1727697600 AND 1742275266;
+ALTER TABLE `pops_admin` ADD `corporate_id` BIGINT NOT NULL AFTER `uid`;
