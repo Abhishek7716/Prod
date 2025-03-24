@@ -6,3 +6,6 @@ INSERT INTO `pops_corporate_details` (`corporate_id`, `corporate_name`, `cho_reg
 
 
 400040433160
+
+ALTER TABLE `pops_charge_matrix` ADD `state` VARCHAR(255) NOT NULL AFTER `max_contribution`;
+
