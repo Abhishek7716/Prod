@@ -3,3 +3,6 @@ INSERT INTO `pops_corporate_details` (`corporate_id`, `corporate_name`, `cho_reg
 
 
 110097206592 (CHO : 5516383) (CBO : 6516532)
+
+
+400040433160
