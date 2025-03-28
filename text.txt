@@ -26,7 +26,9 @@ Tejesh Sawant: 3/26/25 01:32 AM, Sub(NPS Subsequent/SIP contribution from Jio Pa
 400040872889    KFINTECH    TRN17428080488802    2500066455429    12161601001038554   Tier I    SUBSEQUENT
 400040873248    KFINTECH    TRN17428083694540    2500066455429    12161601001038555   Tier I    SUBSEQUENT
 
+SELECT *,FROM_UNIXTIME(payment_init_on) AS payment_init_on FROM icipru_popprd.pops_pg_transaction_details where contribution_type='SUBSEQUENT' 
+AND payment_init_on >= UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) 
+AND payment_init_on < UNIX_TIMESTAMP(CURDATE()) and payment_status = 'F';
 
-SELECT * FROM `pops_pg_transaction_details` 
-WHERE contribution_type = 'subsequent' 
-AND FROM_UNIXTIME(payment_in_it, '%Y-%m-%d') = DATE_ADD(CURDATE(), INTERVAL 1 DAY);
+
+
