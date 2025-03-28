@@ -32,3 +32,19 @@ AND payment_init_on < UNIX_TIMESTAMP(CURDATE()) and payment_status = 'F';
 
 
 
+
+SELECT 
+    t.*, 
+    FROM_UNIXTIME(t.payment_init_on) AS payment_init_on, 
+    s.* 
+FROM icipru_popprd.pops_pg_transaction_details t
+JOIN icipru_popprd.pops_subsequent_contribution_details s 
+    ON t.contr_ref_id = s.sub_cont_id
+WHERE 
+    t.contribution_type = 'SUBSEQUENT' 
+    AND t.payment_init_on >= UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) 
+    AND t.payment_init_on < UNIX_TIMESTAMP(CURDATE()) 
+    AND t.payment_status = 'F';
+
+
+
