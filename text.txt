@@ -26,25 +26,13 @@ Tejesh Sawant: 3/26/25 01:32 AM, Sub(NPS Subsequent/SIP contribution from Jio Pa
 400040872889    KFINTECH    TRN17428080488802    2500066455429    12161601001038554   Tier I    SUBSEQUENT
 400040873248    KFINTECH    TRN17428083694540    2500066455429    12161601001038555   Tier I    SUBSEQUENT
 
-SELECT *,FROM_UNIXTIME(payment_init_on) AS payment_init_on FROM icipru_popprd.pops_pg_transaction_details where contribution_type='SUBSEQUENT' 
+
+
+SELECT *,FROM_UNIXTIME(payment_init_on) AS payment_init_on FROM icipru_popprd.pops_pg_transaction_details
+JOIN icipru_popprd.pops_subsequent_contribution_details 
+    ON pops_pg_transaction_details.contr_ref_id = pops_subsequent_contribution_details.sub_contr_id
+ where contribution_type='SUBSEQUENT' 
 AND payment_init_on >= UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) 
 AND payment_init_on < UNIX_TIMESTAMP(CURDATE()) and payment_status = 'F';
-
-
-
-
-SELECT 
-    t.*, 
-    FROM_UNIXTIME(t.payment_init_on) AS payment_init_on, 
-    s.* 
-FROM icipru_popprd.pops_pg_transaction_details t
-JOIN icipru_popprd.pops_subsequent_contribution_details s 
-    ON t.contr_ref_id = s.sub_cont_id
-WHERE 
-    t.contribution_type = 'SUBSEQUENT' 
-    AND t.payment_init_on >= UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 1 DAY)) 
-    AND t.payment_init_on < UNIX_TIMESTAMP(CURDATE()) 
-    AND t.payment_status = 'F';
-
 
 
