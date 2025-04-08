@@ -1,4 +1,4 @@
-
+TRN17437162215758
 SELECT
     t1.mast_sip_contr_id AS "SIP ID",
     t1.pran AS PRAN,
