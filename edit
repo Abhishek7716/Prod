@@ -33,3 +33,6 @@ ORDER BY t1.mast_sip_contr_id, t2.sip_date, t3.payment_init_on ASC;
 
 
 https://popuat.iciciprupension.com/corporate_mapping/RGVsb2l0dGU=?email=Ymh1cGVzaC5zQG1vYmlsZXN0eXguY29t&pran=MTIzNDU2Nzg5MDEy&name=Qmh1cGVzaCBTaGV0&mob_num=OTc2MjM3OTQwMw==c
+
+INSERT INTO `pops_sms_notification` (`id`, `type`, `template_id`, `description`, `subject`, `message`, `status`, `is_on`) VALUES (NULL, 'corp_map', '1107171699601202979', 'otp_on_mobile', 'Otp', 'Dear Subscriber, Please use OTP [%OTP%] to map your existing PRAN with corporate NPS scheme. Regards -ICICI Prudential Pension Funds Management Co Ltd', 'S', 'Y')
+
