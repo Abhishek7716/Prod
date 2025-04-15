@@ -30,3 +30,6 @@ WHERE
     AND t2.mandate_trigger1_on IS NOT NULL
     AND t1.sip_status = "A"
 ORDER BY t1.mast_sip_contr_id, t2.sip_date, t3.payment_init_on ASC;
+
+
+https://popuat.iciciprupension.com/corporate_mapping/RGVsb2l0dGU=?email=Ymh1cGVzaC5zQG1vYmlsZXN0eXguY29t&pran=MTIzNDU2Nzg5MDEy&name=Qmh1cGVzaCBTaGV0&mob_num=OTc2MjM3OTQwMw==c
