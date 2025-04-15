@@ -36,3 +36,6 @@ https://popuat.iciciprupension.com/corporate_mapping/RGVsb2l0dGU=?email=Ymh1cGVz
 
 INSERT INTO `pops_sms_notification` (`id`, `type`, `template_id`, `description`, `subject`, `message`, `status`, `is_on`) VALUES (NULL, 'corp_map', '1107171699601202979', 'otp_on_mobile', 'Otp', 'Dear Subscriber, Please use OTP [%OTP%] to map your existing PRAN with corporate NPS scheme. Regards -ICICI Prudential Pension Funds Management Co Ltd', 'S', 'Y')
 
+https://popuat.iciciprupension.com/cpan/adm_login
+usr : 900157
+psk  : March@1435
