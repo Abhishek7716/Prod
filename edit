@@ -1,41 +1,10 @@
-SELECT
-    t1.mast_sip_contr_id AS "SIP ID",
-    t1.pran AS PRAN,
-    t1.tier_type AS "TIER TYPE",
-    t1.mandate_sip_date as  "mandate_sip_date",
-    t1.sip_frequency,
-    t2.total_amount_received AS "NET AMOUNT",
-    t2.sip_amount AS "TOTAL AMOUNT",
-    t1.umrn AS UMRN,
-    t1.mode_of_payment AS 'Mode of Payment',
-    from_unixtime(t1.created_on) AS "SIP CREATED ON",
-    t2.contr_id AS "SIP CONTR ID",
-    from_unixtime(t2.mandate_trigger1_on) AS "1st AUTO DEBIT MANDATE TRIGGERED ON",
-    from_unixtime(t2.mandate_trigger2_on) AS "2nd AUTO DEBIT MANDATE TRIGGERED ON",
-    from_unixtime(t2.mandate_trigger3_on) AS "3rd AUTO DEBIT MANDATE TRIGGERED ON",
-    from_unixtime(t2.sip_date) AS "SIP DATE",
-    t2.mandate_status AS "MANDATE STATUS",
-    t2.payment_trans_id AS "CURRENT ACTIVE PAYMENT TID",
-    t3.payment_trans_id AS "PAYMENT TID",
-    t3.payment_status AS "PAYMENT STATUS",
-    from_unixtime(t3.payment_init_on) AS "PAYMENT INITIATED ON",
-    from_unixtime(t3.payment_compl_on) AS "PAYMENT S2S RECEIVED ON",
-    t2.contr_cra_sync_status AS "CRA SYNC STATUS",
-    t2.contr_cra_trans_id AS "CRA TID"
-FROM icipru_popprd.pops_master_contribution_details AS t1
-    INNER JOIN icipru_popprd.pops_contribution_details_cycle AS t2 ON t1.mast_sip_contr_id = t2.mast_sip_contr_id
-    INNER JOIN icipru_popprd.pops_pg_transaction_details AS t3 ON t2.payment_trans_id = t3.payment_trans_id
-WHERE
-    t3.contribution_type = "SIP"
-    AND t2.mandate_trigger1_on IS NOT NULL
-    AND t1.sip_status = "A"
-ORDER BY t1.mast_sip_contr_id, t2.sip_date, t3.payment_init_on ASC;
-
-
-https://popuat.iciciprupension.com/corporate_mapping/RGVsb2l0dGU=?email=Ymh1cGVzaC5zQG1vYmlsZXN0eXguY29t&pran=MTIzNDU2Nzg5MDEy&name=Qmh1cGVzaCBTaGV0&mob_num=OTc2MjM3OTQwMw==c
-
-INSERT INTO `pops_sms_notification` (`id`, `type`, `template_id`, `description`, `subject`, `message`, `status`, `is_on`) VALUES (NULL, 'corp_map', '1107171699601202979', 'otp_on_mobile', 'Otp', 'Dear Subscriber, Please use OTP [%OTP%] to map your existing PRAN with corporate NPS scheme. Regards -ICICI Prudential Pension Funds Management Co Ltd', 'S', 'Y')
-
-https://popuat.iciciprupension.com/cpan/adm_login
-usr : 900157
-psk  : March@1435
+110062980025
+1)https://popuat.iciciprupension.com/corporate_mapping/TW9iaWxlc3R5eA==?email=Ymh1cGVzaC5zQG1vYmlsZXN0eXguY29t&pran=MTEwMDYyOTgwMDI1&name=Qmh1cGVzaCBTaGV0&mob_num=OTc2MjM3OTQwMw==
+ 
+ 
+900060050248
+2) https://popuat.iciciprupension.com/corporate_mapping/TW9iaWxlc3R5eA==?email=Ymh1cGVzaC5zQG1vYmlsZXN0eXguY29t&pran=OTAwMDYwMDUwMjQ4&name=Qmh1cGVzaCBTaGV0&mob_num=OTc2MjM3OTQwMw==
+ 
+ 
+400040433160
+3) https://popuat.iciciprupension.com/corporate_mapping/TW9iaWxlc3R5eA==?email=Ymh1cGVzaC5zQG1vYmlsZXN0eXguY29t&pran=NDAwMDQwNDMzMTYw&name=Qmh1cGVzaCBTaGV0&mob_num=OTc2MjM3OTQwMw==
