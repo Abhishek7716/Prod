@@ -24,3 +24,5 @@ PRAN            Total contri    Type            Transaction ID      CRA TID     
 110173390572    50,295.00       NSDL            TRN17437442199584   1301233091744   12673253001039876   SUBSEQUENT 
 --------------------------------------------New CRA TID and receipt no-------------------------------------------- (Excel)
 
+INSERT INTO `pops_roles` (`id`, `role`, `permissions`, `deleted`, `created_on`, `updated_on`) VALUES (NULL, 'NODAL', 'a:7:{s:22:\"corporate_contribution\";s:1:\"1\";s:20:\"contribution_history\";s:1:\"1\";s:13:\"pran_shifting\";s:1:\"1\";s:15:\"request_summary\";s:1:\"1\";s:27:\"corporate_modification_list\";s:1:\"1\";s:18:\"pran_shifting_list\";s:1:\"1\";s:22:\"corporate_modification\";s:1:\"1\";}', '0', '0', '1718880124')
+
