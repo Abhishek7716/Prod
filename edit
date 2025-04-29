@@ -1,5 +1,32 @@
-INSERT INTO `pops_charge_matrix` (`matrix_id`, `corporate_id`, `corporate_name`, `corporate_cho_no`, `matrix_type`, `matrix_category`, `account_opening_charges`, `pop_charge`, `igst_register`, `cgst_register`, `sgst_register`, `igst_pop_charge`, `cgst_pop_charge`, `sgst_pop_charge`, `corp_discount`, `status`, `T2`, `V`, `max_contribution`, `state`, `requested_on`, `min`, `max`, `created_on`, `updated_on`) VALUES (NULL, '1', 'Corp_1', '1000000', 'CP', 'KFINTECH', '45.0000000000', '0.5000000000', '18.0000000000', '0.0000000000', '0.0000000000', '18.0000000000', '0.0000000000', '0.0000000000', '455.0000000000', 'A', '0.5000000000', '0.5000000000', '25000', 'Andhra Pradesh', '1745496423', '0', '0', '1745496443', '0'), (NULL, '2', 'corp_2', '2000000', 'CP', 'KFINTECH', '0.0000000000', '0.2000000000', '18.0000000000', '0.0000000000', '0.0000000000', '18.0000000000', '0.0000000000', '0.0000000000', '0.0000000000', 'A', '0.5000000000', '0.5000000000', '25000', 'Arunachal Pradesh', '1745490348', '0', '0', '1745490364', '0'), (NULL, '3', 'corp_3', '3000000', 'CP', 'NSDL', '18.0000000000', '0.1000000000', '0.0000000000', '9.0000000000', '9.0000000000', '0.0000000000', '9.0000000000', '9.0000000000', '0.0000000000', 'A', '0.5000000000', '0.5000000000', '25000', 'Bihar', '1745497094', '0', '0', '1745497106', '0'), (NULL, '4', 'corp_4', '4000000', 'CP', 'NSDL', '10.0000000000', '0.2000000000', '18.0000000000', '0.0000000000', '0.0000000000', '18.0000000000', '0.0000000000', '0.0000000000', '0.0000000000', 'A', '0.5000000000', '0.5000000000', '25000', 'Chhattisgarh', '1745496588', '0', '0', '1745496779', '0'), (NULL, '5', 'corp_5', '5000000', 'CP', 'CAMS', '13.0000000000', '0.0000000000', '18.0000000000', '0.0000000000', '0.0000000000', '18.0000000000', '0.0000000000', '0.0000000000', '14.0000000000', 'A', '0.5000000000', '0.5000000000', '25000', 'Assam', '1745496615', '0', '0', '1745496650', '0'), (NULL, '6', 'corp_6', '6000000', 'CP', 'CAMS', '13.0000000000', '0.0000000000', '18.0000000000', '0.0000000000', '0.0000000000', '18.0000000000', '0.0000000000', '0.0000000000', '11.0000000000', 'A', '0.5000000000', '0.5000000000', '25000', 'Mizoram', '1745495258', '0', '0', '1745495278', '0')
-
-
-
-INSERT INTO `pops_corporate_details` (`corporate_id`, `corporate_name`, `cho_reg_no`, `cbo_no`, `cra`, `address`, `contact`, `email`, `state`, `status`, `rm_code`, `rm_name`, `rm_email`, `rm_mobile_no`, `gst_number`, `requested_on`, `created_on`, `updated_on`) VALUES (NULL, 'Corp_1', '1000000', '1000000', 'KFINTECH', '', '', '', 'Andhra Pradesh', 'A', '1', 'Corp', 'corp_1@gmail.com', '1111111111', NULL, '0', '1745398213', '0'), (NULL, 'corp_2', '2000000', '2000000', 'KFINTECH', '', '', '', 'Arunachal Pradesh', 'A', '2', 'corp', 'corp@gmail.com', '1010101010', NULL, '0', '1745398605', '0'), (NULL, 'corp_3', '3000000', '3000000', 'NSDL', '', '', '', 'Bihar', 'A', '3', 'corp', 'corp_3@gmail.com', '1231231233', NULL, '0', '1745398616', '0'), (NULL, 'corp_4', '4000000', '4000000', 'NSDL', '', '', '', 'Chhattisgarh', 'A', '4', 'corp', 'corp_4@gmail.com', '1515151515', NULL, '0', '1745398626', '0'), (NULL, 'corp_5', '5000000', '5000000', 'CAMS', '', '', '', 'Assam', 'A', '5', 'corp', 'corp_5@hmail.com', '1213123312', NULL, '0', '1745398734', '1745398734'), (NULL, 'corp_6', '6000000', '6000000', 'CAMS', '', '', '', 'Mizoram', 'A', '6', 'corp', 'corp_6@gmail.com', '4856987455', NULL, '0', '1745398650', '0')
+SELECT
+    t1.mast_sip_contr_id AS "SIP ID",
+    t1.pran AS PRAN,
+    t1.tier_type AS "TIER TYPE",
+    t1.mandate_sip_date as  "mandate_sip_date",
+    t1.sip_frequency,
+    t2.total_amount_received AS "NET AMOUNT",
+    t2.sip_amount AS "TOTAL AMOUNT",
+    t1.umrn AS UMRN,
+    t1.mode_of_payment AS 'Mode of Payment',
+    from_unixtime(t1.created_on) AS "SIP CREATED ON",
+    t2.contr_id AS "SIP CONTR ID",
+    from_unixtime(t2.mandate_trigger1_on) AS "1st AUTO DEBIT MANDATE TRIGGERED ON",
+    from_unixtime(t2.mandate_trigger2_on) AS "2nd AUTO DEBIT MANDATE TRIGGERED ON",
+    from_unixtime(t2.mandate_trigger3_on) AS "3rd AUTO DEBIT MANDATE TRIGGERED ON",
+    from_unixtime(t2.sip_date) AS "SIP DATE",
+    t2.mandate_status AS "MANDATE STATUS",
+    t2.payment_trans_id AS "CURRENT ACTIVE PAYMENT TID",
+    t3.payment_trans_id AS "PAYMENT TID",
+    t3.payment_status AS "PAYMENT STATUS",
+    from_unixtime(t3.payment_init_on) AS "PAYMENT INITIATED ON",
+    from_unixtime(t3.payment_compl_on) AS "PAYMENT S2S RECEIVED ON",
+    t2.contr_cra_sync_status AS "CRA SYNC STATUS",
+    t2.contr_cra_trans_id AS "CRA TID"
+FROM icipru_popprd.pops_master_contribution_details AS t1
+    INNER JOIN icipru_popprd.pops_contribution_details_cycle AS t2 ON t1.mast_sip_contr_id = t2.mast_sip_contr_id
+    INNER JOIN icipru_popprd.pops_pg_transaction_details AS t3 ON t2.payment_trans_id = t3.payment_trans_id
+WHERE
+    t3.contribution_type = "SIP"
+    AND t2.mandate_trigger1_on IS NOT NULL
+    AND t1.sip_status = "A"
+ORDER BY t1.mast_sip_contr_id, t2.sip_date, t3.payment_init_on ASC;
